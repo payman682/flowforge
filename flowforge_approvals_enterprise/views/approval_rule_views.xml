@@ -1,0 +1,109 @@
+<odoo>
+    <record id="view_flowforge_rule_list" model="ir.ui.view">
+        <field name="name">flowforge.approval.rule.list</field>
+        <field name="model">flowforge.approval.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="approval_mode"/>
+                <field name="company_id" optional="show"/>
+                <field name="active"/>
+                <field name="request_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_flowforge_rule_form" model="ir.ui.view">
+        <field name="name">flowforge.approval.rule.form</field>
+        <field name="model">flowforge.approval.rule</field>
+        <field name="arch" type="xml">
+            <form string="Approval Rule">
+                <header>
+                    <button name="action_open_requests" string="Requests" type="object" class="oe_stat_button" icon="fa-list"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active"/>
+                            <field name="sequence"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="model_id"/>
+                            <field name="trigger"/>
+                            <field name="approval_mode"/>
+                        </group>
+                        <group>
+                            <field name="mandatory_before_action"/>
+                            <field name="auto_submit"/>
+                            <field name="lock_record"/>
+                            <field name="allow_delegate"/>
+                            <field name="allow_request_changes"/>
+                            <field name="template_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Conditions">
+                            <field name="domain" widget="text" placeholder='[["amount_total", ">", 10000]]'/>
+                            <field name="description"/>
+                        </page>
+                        <page string="Stages">
+                            <field name="stage_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="approver_source"/>
+                                    <field name="approval_type"/>
+                                    <field name="min_approvals"/>
+                                    <field name="deadline_hours"/>
+                                    <field name="allow_delegate"/>
+                                </list>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="sequence"/>
+                                            <field name="approver_source"/>
+                                            <field name="approval_type"/>
+                                            <field name="min_approvals" attrs="{'invisible': [('approval_type', '!=', 'min')]}"/>
+                                            <field name="deadline_hours"/>
+                                        </group>
+                                        <group>
+                                            <field name="approver_ids" widget="many2many_tags" attrs="{'invisible': [('approver_source', '!=', 'users')]}"/>
+                                            <field name="group_ids" widget="many2many_tags" attrs="{'invisible': [('approver_source', '!=', 'groups')]}"/>
+                                            <field name="user_field_name" attrs="{'invisible': [('approver_source', '!=', 'field_user')]}"/>
+                                            <field name="allow_delegate"/>
+                                            <field name="require_comment_on_reject"/>
+                                            <field name="notify_template"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Actions">
+                            <field name="action_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="action_type"/>
+                                    <field name="field_name" optional="show"/>
+                                    <field name="summary" optional="show"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_flowforge_rules" model="ir.actions.act_window">
+        <field name="name">Approval Rules</field>
+        <field name="res_model">flowforge.approval.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,8 @@
+<odoo>
+    <menuitem id="menu_flowforge_root" name="FlowForge" sequence="10" groups="flowforge_approvals_enterprise.group_flowforge_user"/>
+    <menuitem id="menu_flowforge_dashboard" name="Dashboard" parent="menu_flowforge_root" action="action_flowforge_dashboard" sequence="1"/>
+    <menuitem id="menu_flowforge_requests" name="Requests" parent="menu_flowforge_root" action="action_flowforge_requests" sequence="5"/>
+    <menuitem id="menu_flowforge_rules" name="Rules" parent="menu_flowforge_root" action="action_flowforge_rules" sequence="10" groups="flowforge_approvals_enterprise.group_flowforge_admin"/>
+    <menuitem id="menu_flowforge_templates" name="Templates" parent="menu_flowforge_root" action="action_flowforge_templates" sequence="15" groups="flowforge_approvals_enterprise.group_flowforge_admin"/>
+    <menuitem id="menu_flowforge_delegations" name="Delegations" parent="menu_flowforge_root" action="action_flowforge_delegations" sequence="20"/>
+</odoo>

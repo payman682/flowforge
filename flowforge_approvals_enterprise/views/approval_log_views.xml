@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_flowforge_log_list" model="ir.ui.view">
+        <field name="name">flowforge.approval.log.list</field>
+        <field name="model">flowforge.approval.log</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="create_date"/>
+                <field name="request_id"/>
+                <field name="action"/>
+                <field name="user_id"/>
+                <field name="note"/>
+            </list>
+        </field>
+    </record>
+</odoo>

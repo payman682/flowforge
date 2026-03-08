@@ -1,0 +1,12 @@
+<odoo noupdate="1">
+    <record id="ir_cron_flowforge_escalation" model="ir.cron">
+        <field name="name">FlowForge Approval Escalation</field>
+        <field name="model_id" ref="model_flowforge_approval_request"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_process_escalations()</field>
+        <field name="interval_number">15</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

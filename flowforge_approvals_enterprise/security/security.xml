@@ -1,0 +1,23 @@
+<odoo>
+    <record id="group_flowforge_user" model="res.groups">
+        <field name="name">FlowForge User</field>
+        <field name="category_id" ref="base.module_category_productivity"/>
+    </record>
+    <record id="group_flowforge_manager" model="res.groups">
+        <field name="name">FlowForge Manager</field>
+        <field name="category_id" ref="base.module_category_productivity"/>
+        <field name="implied_ids" eval="[(4, ref('group_flowforge_user'))]"/>
+    </record>
+    <record id="group_flowforge_admin" model="res.groups">
+        <field name="name">FlowForge Administrator</field>
+        <field name="category_id" ref="base.module_category_productivity"/>
+        <field name="implied_ids" eval="[(4, ref('group_flowforge_manager'))]"/>
+    </record>
+
+    <record id="flowforge_request_rule_user" model="ir.rule">
+        <field name="name">FlowForge request access for requester / approver</field>
+        <field name="model_id" ref="model_flowforge_approval_request"/>
+        <field name="groups" eval="[(4, ref('flowforge_approvals_enterprise.group_flowforge_user'))]"/>
+        <field name="domain_force">['|', ('requested_by_id', '=', user.id), ('line_ids.user_id', '=', user.id)]</field>
+    </record>
+</odoo>

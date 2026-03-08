@@ -1,0 +1,8 @@
+<odoo noupdate="1">
+    <record id="seq_flowforge_approval_request" model="ir.sequence">
+        <field name="name">Approval Request</field>
+        <field name="code">flowforge.approval.request</field>
+        <field name="prefix">APR/%(year)s/</field>
+        <field name="padding">5</field>
+    </record>
+</odoo>

@@ -1,0 +1,16 @@
+<odoo>
+    <template id="portal_approval_page" name="FlowForge Portal Approval Page">
+        <t t-call="web.layout">
+            <div class="container mt-4 mb-5">
+                <h1 t-esc="approval.name"/>
+                <p><strong>Status:</strong> <span t-esc="approval.state"/></p>
+                <p><strong>Target:</strong> <span t-esc="approval.target_display_name"/></p>
+                <div class="btn-group" role="group">
+                    <a t-attf-href="/flowforge/approval/#{approval.token}?action=approve" class="btn btn-success">Approve</a>
+                    <a t-attf-href="/flowforge/approval/#{approval.token}?action=reject" class="btn btn-danger">Reject</a>
+                    <a t-attf-href="/flowforge/approval/#{approval.token}?action=changes" class="btn btn-secondary">Request Changes</a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
