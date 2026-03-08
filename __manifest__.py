@@ -1,0 +1,33 @@
+{
+    "name": "FlowForge Approvals Enterprise",
+    "summary": "Universal approval workflow engine for Odoo 19",
+    "version": "19.0.1.0.0",
+    "category": "Productivity",
+    "author": "OpenAI",
+    "website": "https://example.com",
+    "license": "OPL-1",
+    "depends": ["base", "mail", "web"],
+    "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
+        "data/sequence.xml",
+        "data/cron.xml",
+        "views/menu_views.xml",
+        "views/approval_rule_views.xml",
+        "views/approval_request_views.xml",
+        "views/approval_log_views.xml",
+        "views/approval_template_views.xml",
+        "views/delegation_views.xml",
+        "views/dashboard_views.xml",
+        "views/portal_templates.xml",
+    ],
+    "assets": {
+        "web.assets_backend": [
+            "flowforge_approvals_enterprise/static/src/scss/approval.scss",
+            "flowforge_approvals_enterprise/static/src/js/dashboard.js",
+        ],
+    },
+    "application": True,
+    "installable": True,
+    "images": ["static/description/icon.png"],
+}
